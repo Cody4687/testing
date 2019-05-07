@@ -23,6 +23,11 @@ bot.on("message", message => {
     var messageArray = message.content.split(" ");
     var cmd = messageArray[0];
     var args = messageArray.slice(1);
+    
+    function send(x) {
+      message.channel.send(x)
+      console.log(x)
+    }
 
     try {
         if (cmd === `${prefix}info`) {
@@ -37,11 +42,11 @@ bot.on("message", message => {
             console.log(`Attempting signup for: ${user}, ${pass}, ${email}`)
             try {
                 if (!fs.existsSync(`./users/${message.author.id}.json`)) {
-                    message.channel.send('Succesfully signed up!')
+                    send('Succesfully signed up!')
                     return (auth.signUp(user, pass, email, id))
                 }
                 if (fs.existsSync(`./users/${message.author.id}.json`)) {
-                    message.channel.send(`Signup Failed! Error: Username Already Exists.`)
+                    send(`Signup Failed! Error: Username Already Exists.`)
                 }
             } catch (err) {
                 console.error(err)
