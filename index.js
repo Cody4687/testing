@@ -30,6 +30,12 @@ bot.on("message", message => {
     }
 
     try {
+
+      
+        if (cmd === `${prefix}anti`) {
+          return(`${args[0]⃠`)
+        }
+        
         if (cmd === `${prefix}info`) {
           return(message.channel.send(info))
         }
